@@ -11,14 +11,14 @@
 body {
     margin: 0;
     font-family: 'Prompt', sans-serif;
-    background: #f2f4f7;
+    background: #010316;
 }
 
 /* ===== Login ===== */ 
 .login-box {
     max-width: 360px;
     margin: 100px auto;
-    background: white;
+    background: rgb(1, 24, 46);
     padding: 25px;
     border-radius: 14px;
     box-shadow: 0 10px 30px rgba(0,0,0,.15);
@@ -27,20 +27,21 @@ body {
 
 .login-box h2 {
     margin-bottom: 20px;
+    color: white;
 }
 
 .login-box input {
     width: 100%;
-    padding: 12px;
+    padding: 9px;
     margin-bottom: 15px;
     border-radius: 10px;
-    border: 1px solid #ddd;
+    border: none;
 }
 
 .login-box button {
     width: 100%;
     padding: 12px;
-    background: #007df1;
+    background: #4224ca;
     color: white;
     border: none;
     border-radius: 10px;
@@ -53,8 +54,9 @@ body {
     display: none;
 }
 
+/* Header */
 .header {
-    background: #007df1;
+    background: #020114;
     color: white;
     padding: 15px;
     text-align: center;
@@ -70,52 +72,17 @@ body {
     background: white;
     color: #007df1;
     border: none;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 8px;
     cursor: pointer;
+    font-size: 14px;
 }
 
-.box {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 14px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.1);
-}
-
-.hidden {
-    display: none;
-}
-</style>
-</head>
-
-<body>
-
-<!-- ===== LOGIN PAGE ===== -->
-<div class="login-box" id="loginPage">
-    <h2>🔐 LOVESIX ADMIN LOGIN</h2>
-    <input type="text" id="username" placeholder="USER">
-    <input type="password" id="password" placeholder="lisenkey">
-    <button onclick="login()">เข้าสู่ระบบ</button>
-</div>
-
-<!-- ===== MAIN PAGE ===== -->
-<div class="main" id="mainPage">
-
-   <head>
-<meta charset="UTF-8">
-<title>เว็บดาวน์โหลดไฟล์</title>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
+/* Download Card */
+.content {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    margin-top: 40px;
 }
 
 .card {
@@ -127,7 +94,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
-select, button {
+select, .download-btn {
     width: 90%;
     padding: 12px;
     margin-top: 12px;
@@ -139,67 +106,66 @@ select {
     border: 1px solid #ccc;
 }
 
-button {
-    background: #007bff;
+.download-btn {
+    background: #00081d;
     color: white;
     border: none;
     cursor: pointer;
 }
-
-button:hover {
-    background: #0056b3;
-}
-
-button:active {
-    transform: scale(0.98);
-}
-
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h2>📥 ดาวน์โหลดไฟล์</h2>
+<!-- ===== LOGIN PAGE ===== -->
+<div class="login-box" id="loginPage">
+    <h2>🔐 LOVESIX ADMIN LOGIN</h2>
+    <input type="text" id="username" placeholder="USER">
+    <input type="password" id="password" placeholder="License Key">
+    <button onclick="login()">เข้าสู่ระบบ</button>
+</div>
 
-    <p>👉 เลือกไฟล์ที่ต้องการแล้วกดปุ่ม</p>
+<!-- ===== MAIN PAGE ===== -->
+<div class="main" id="mainPage">
 
-    <!-- เลือกไฟล์ -->
-    <select id="fileSelect">
-        <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">กดG ตัวไม่โดนดาเมจ</option>
-        <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">โปรแกรม 2 (EXE)</option>
-        <option value="https://example.com/file3.apk">แอป Android (APK)</option>
-        <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">แอป Android (APK)</option>
-    </select>
+    <div class="header">
+        LOVESIX DOWNLOAD
+        <button class="logout" onclick="logout()">ออกจากระบบ</button>
+    </div>
 
-    <!-- ปุ่มดาวน์โหลด -->
-    <button onclick="downloadFile()">
-        📥 ดาวน์โหลด
-    </button>
+    <div class="content">
+        <div class="card">
+            <h2>📥 ดาวน์โหลดไฟล์</h2>
+            <p>เลือกไฟล์ที่ต้องการ</p>
+
+            <select id="fileSelect">
+                <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">
+                    กด G ตัวไม่โดนดาเมจ
+                </option>
+                <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1460280531609452648/UNBANSERVER.exe?ex=696af4f9&is=6969a379&hm=443b92a024d4a5a7d5362938dc5814092b7eeacb117d762113032891e32357de&">
+                    UNBANSERVER.exe 
+                </option>
+                <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1426928103451656295/windows.rar?ex=696ae91a&is=6969979a&hm=4e16843ec1e82c3ba066db8da05a9c0be5e1c59637bc736f770a00f01e773461&">
+                   ค่าเม้า 
+                </option>
+            </select>
+
+            <button class="download-btn" onclick="downloadFile()">📥 ดาวน์โหลด</button>
+        </div>
+    </div>
 </div>
 
 <script>
-function downloadFile() {
-    const url = document.getElementById("fileSelect").value;
-    window.open(url, "_blank");
-}
-</script>
-</body>
-</html>
-
-
-</div>
-
-<script>
-/* ===== USER ACCOUNT ===== */
+/* ===== ACCOUNT ===== */
 const USERNAME = "admin";
 const PASSWORD = "ABC123-XYZ999";
 
-/* ===== CHECK LOGIN ===== */
+/* ===== AUTO LOGIN ===== */
 if (localStorage.getItem("loggedIn") === "true") {
     showMain();
 }
 
+/* ===== LOGIN ===== */
 function login() {
     const user = document.getElementById("username").value;
     const pass = document.getElementById("password").value;
@@ -208,18 +174,27 @@ function login() {
         localStorage.setItem("loggedIn", "true");
         showMain();
     } else {
-        alert("❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+        alert("❌ ชื่อผู้ใช้หรือ License ไม่ถูกต้อง");
     }
 }
 
+/* ===== SHOW MAIN ===== */
 function showMain() {
     document.getElementById("loginPage").style.display = "none";
     document.getElementById("mainPage").style.display = "block";
 }
 
+/* ===== LOGOUT ===== */
 function logout() {
     localStorage.removeItem("loggedIn");
+    alert("ออกจากระบบเรียบร้อย");
     location.reload();
+}
+
+/* ===== DOWNLOAD ===== */
+function downloadFile() {
+    const url = document.getElementById("fileSelect").value;
+    window.open(url, "_blank");
 }
 </script>
 
