@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOVESIX ADMIN</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif;
+    background: #f2f4f7;
+}
+
+/* ===== Login ===== */ 
+.login-box {
+    max-width: 360px;
+    margin: 100px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    text-align: center;
+}
+
+.login-box h2 {
+    margin-bottom: 20px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 12px;
+    background: #007df1;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ===== Main Page ===== */
+.main {
+    display: none;
+}
+
+.header {
+    background: #007df1;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    position: relative;
+}
+
+.logout {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: white;
+    color: #007df1;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.box {
+    max-width: 800px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.1);
+}
+
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div class="login-box" id="loginPage">
+    <h2>🔐 LOVESIX ADMIN LOGIN</h2>
+    <input type="text" id="username" placeholder="USER">
+    <input type="password" id="password" placeholder="lisenkey">
+    <button onclick="login()">เข้าสู่ระบบ</button>
+</div>
+
+<!-- ===== MAIN PAGE ===== -->
+<div class="main" id="mainPage">
+
+   <head>
+<meta charset="UTF-8">
+<title>เว็บดาวน์โหลดไฟล์</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    width: 380px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+select, button {
+    width: 90%;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+select {
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h2>📥 ดาวน์โหลดไฟล์</h2>
+
+    <p>👉 เลือกไฟล์ที่ต้องการแล้วกดปุ่ม</p>
+
+    <!-- เลือกไฟล์ -->
+    <select id="fileSelect">
+        <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">กดG ตัวไม่โดนดาเมจ</option>
+        <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">โปรแกรม 2 (EXE)</option>
+        <option value="https://example.com/file3.apk">แอป Android (APK)</option>
+        <option value="https://cdn.discordapp.com/attachments/1413802315290251345/1459209423900905546/d3d10.dll?ex=696a5b2d&is=696909ad&hm=17874f059e0061871fcc20c4e0b1dc750f1e8cdac87cd501487b9014b6a63237&">แอป Android (APK)</option>
+    </select>
+
+    <!-- ปุ่มดาวน์โหลด -->
+    <button onclick="downloadFile()">
+        📥 ดาวน์โหลด
+    </button>
+</div>
+
+<script>
+function downloadFile() {
+    const url = document.getElementById("fileSelect").value;
+    window.open(url, "_blank");
+}
+</script>
+</body>
+</html>
+
+
+</div>
+
+<script>
+/* ===== USER ACCOUNT ===== */
+const USERNAME = "admin";
+const PASSWORD = "ABC123-XYZ999";
+
+/* ===== CHECK LOGIN ===== */
+if (localStorage.getItem("loggedIn") === "true") {
+    showMain();
+}
+
+function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+
+    if (user === USERNAME && pass === PASSWORD) {
+        localStorage.setItem("loggedIn", "true");
+        showMain();
+    } else {
+        alert("❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+    }
+}
+
+function showMain() {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("mainPage").style.display = "block";
+}
+
+function logout() {
+    localStorage.removeItem("loggedIn");
+    location.reload();
+}
+</script>
+
+</body>
+</html>
